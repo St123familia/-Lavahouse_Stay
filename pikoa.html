@@ -7,14 +7,17 @@
 
   <style>
     :root {
-      --black: #090908;
-      --charcoal: #11110f;
-      --wood: #211810;
-      --moss: #31382c;
-      --mist: #d9d5ca;
-      --warm: #b49a72;
-      --soft: rgba(217, 213, 202, .74);
-      --line: rgba(217, 213, 202, .18);
+      --ink: #15120e;
+      --deep: #1f1a14;
+      --wood: #6f4b2f;
+      --walnut: #8a603d;
+      --leaf: #5f6f54;
+      --mist: #f2eee7;
+      --paper: #ebe3d7;
+      --muted: #766c60;
+      --gold: #b99363;
+      --line: rgba(31, 26, 20, .14);
+      --light-line: rgba(242, 238, 231, .22);
     }
 
     * { box-sizing: border-box; }
@@ -23,39 +26,21 @@
 
     body {
       margin: 0;
-      color: var(--mist);
-      background: var(--black);
+      color: var(--ink);
+      background: var(--paper);
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
         "Yu Gothic", "Noto Sans JP", sans-serif;
-      line-height: 1.85;
+      line-height: 1.78;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     a { color: inherit; }
-
-    .page {
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(180, 154, 114, .13), transparent 30rem),
-        linear-gradient(180deg, var(--black), #0d0d0b 38%, #080807);
-    }
-
-    .section {
-      padding: 88px 6vw;
-    }
-
-    .inner {
-      width: min(100%, 1080px);
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--warm);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
 
     h1,
     h2,
@@ -63,341 +48,490 @@
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      line-height: 1.12;
       letter-spacing: 0;
+      line-height: 1.08;
     }
 
     h1 {
-      max-width: 760px;
-      font-size: clamp(42px, 13vw, 118px);
+      font-size: clamp(56px, 18vw, 156px);
     }
 
     h2 {
-      font-size: clamp(34px, 9vw, 76px);
+      font-size: clamp(38px, 11vw, 88px);
     }
 
     h3 {
-      font-size: clamp(27px, 7vw, 48px);
+      font-size: 25px;
+    }
+
+    p { margin: 0; }
+
+    .eyebrow {
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
     .jp {
-      margin: 0;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 500;
       line-height: 1.9;
     }
 
     .en {
-      margin: 16px 0 0;
-      color: var(--soft);
+      margin-top: 12px;
+      color: var(--muted);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.72;
+    }
+
+    .section {
+      padding: 86px 6vw;
+    }
+
+    .inner {
+      width: min(100%, 1120px);
+      margin: 0 auto;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      margin-top: 30px;
-      padding: 13px 22px;
-      border: 1px solid rgba(180, 154, 114, .75);
-      color: #f6f0e6;
-      background: rgba(180, 154, 114, .08);
+      min-height: 50px;
+      margin-top: 28px;
+      padding: 14px 24px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--mist);
       text-decoration: none;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: .12em;
-      transition: background .25s ease, border-color .25s ease;
+      transition: background .24s ease, color .24s ease, border-color .24s ease;
     }
 
     .button:hover {
-      background: rgba(180, 154, 114, .24);
-      border-color: var(--warm);
+      background: transparent;
+      color: var(--ink);
     }
 
     .hero {
-      min-height: 96svh;
+      min-height: 100svh;
+      position: relative;
       display: flex;
       align-items: flex-end;
-      position: relative;
-      padding: 34px 6vw 64px;
-      background:
-        linear-gradient(180deg, rgba(9, 9, 8, .2), rgba(9, 9, 8, .88)),
-        linear-gradient(120deg, rgba(9, 9, 8, .86), rgba(49, 56, 44, .44));
+      padding: 28px 5vw 54px;
+      color: var(--mist);
+      background: var(--deep);
     }
 
-    .hero::before {
+    .hero-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-image::after {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: .34;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(180deg, transparent, #000 20%, #000 72%, transparent);
+        linear-gradient(180deg, rgba(18, 14, 10, .16), rgba(18, 14, 10, .68)),
+        linear-gradient(90deg, rgba(18, 14, 10, .72), rgba(18, 14, 10, .12) 68%);
     }
 
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 72% 18%, rgba(217, 213, 202, .18), transparent 18rem),
-        linear-gradient(145deg, transparent 0 42%, rgba(33, 24, 16, .84) 42% 72%, transparent 72%);
-      opacity: .72;
+    .hero-image img {
+      object-position: center;
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      width: min(100%, 1080px);
+      width: min(100%, 1120px);
       margin: 0 auto;
     }
 
+    .hero-kicker {
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .22em;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin-top: 16px;
+      font-size: clamp(20px, 5vw, 34px);
+      line-height: 1.48;
+    }
+
     .hero .en {
-      max-width: 610px;
-      margin-top: 20px;
-      font-size: 17px;
+      max-width: 590px;
+      color: rgba(242, 238, 231, .78);
+      font-size: clamp(18px, 4.4vw, 22px);
+      line-height: 1.84;
     }
 
-    .thought {
-      background: linear-gradient(180deg, #0d0d0b, var(--charcoal));
+    .hero .button {
+      border-color: rgba(255, 255, 255, .82);
+      background: rgba(0, 0, 0, .28);
+      color: #fff;
     }
 
-    .thought-grid {
-      display: grid;
-      gap: 42px;
+    .hero .button:hover {
+      background: rgba(255, 255, 255, .94);
+      color: var(--ink);
     }
 
-    .copy-block {
-      max-width: 640px;
-    }
-
-    .visual-note {
-      min-height: 280px;
-      border: 1px solid var(--line);
+    .concept {
       background:
-        linear-gradient(180deg, rgba(217, 213, 202, .05), transparent),
-        linear-gradient(135deg, rgba(49, 56, 44, .55), rgba(33, 24, 16, .82));
+        linear-gradient(180deg, rgba(235, 227, 215, .96), rgba(244, 239, 231, .98));
     }
 
-    .bedroom {
-      background: var(--wood);
-    }
-
-    .feature-grid {
+    .concept-grid {
       display: grid;
       gap: 34px;
     }
 
-    .feature-copy {
+    .concept-copy {
       align-self: center;
     }
 
-    .image-slot {
-      min-height: 360px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(9, 9, 8, .08), rgba(9, 9, 8, .58)),
-        linear-gradient(110deg, #1b130d, #2a2118 48%, #10120e);
+    .concept-media {
+      min-height: 410px;
+      overflow: hidden;
     }
 
-    .details {
+    .concept-media img {
+      object-position: center;
+    }
+
+    .statement {
+      max-width: 760px;
+      margin-top: 26px;
+    }
+
+    .gallery {
+      color: var(--mist);
+      background: var(--deep);
+    }
+
+    .gallery .en {
+      color: rgba(242, 238, 231, .68);
+    }
+
+    .gallery-head {
+      margin-bottom: 38px;
+    }
+
+    .gallery-grid {
       display: grid;
-      gap: 14px;
-      margin: 32px 0 0;
-      padding: 0;
-      list-style: none;
-      color: rgba(217, 213, 202, .82);
-      font-size: 14px;
+      gap: 16px;
     }
 
-    .details li {
-      padding-top: 14px;
+    .gallery-item {
+      min-height: 330px;
+      position: relative;
+      overflow: hidden;
+      background: #2b241c;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 38%, rgba(14, 11, 8, .78));
+    }
+
+    .gallery-caption {
+      position: absolute;
+      z-index: 1;
+      right: 20px;
+      bottom: 18px;
+      left: 20px;
+      color: var(--mist);
+    }
+
+    .gallery-caption span {
+      display: block;
+      color: rgba(242, 238, 231, .72);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 13px;
+    }
+
+    .stay {
+      background: #f4efe7;
+    }
+
+    .stay-layout {
+      display: grid;
+      gap: 42px;
+    }
+
+    .stay-list {
+      display: grid;
+      gap: 0;
       border-top: 1px solid var(--line);
     }
 
-    .quiet {
-      background:
-        linear-gradient(180deg, rgba(49, 56, 44, .92), rgba(8, 8, 7, .96)),
-        var(--moss);
-    }
-
-    .quiet-list {
-      display: grid;
-      gap: 20px;
-      margin-top: 42px;
-    }
-
-    .quiet-item {
-      padding: 26px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .quiet-item:last-child {
+    .stay-item {
+      padding: 24px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .quiet-item p {
-      margin: 12px 0 0;
-      color: var(--soft);
+    .stay-item p {
+      margin-top: 9px;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    .booking {
-      min-height: 72svh;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      background:
-        linear-gradient(180deg, rgba(8, 8, 7, .76), rgba(8, 8, 7, .96)),
-        linear-gradient(120deg, rgba(180, 154, 114, .2), transparent 54%);
+    .stay-media {
+      min-height: 430px;
+      overflow: hidden;
     }
 
-    .booking .copy-block {
-      margin: 0 auto;
+    .booking {
+      color: var(--mist);
+      background:
+        linear-gradient(180deg, rgba(21, 18, 14, .76), rgba(21, 18, 14, .9)),
+        url("images/pikoa-house/IMG_0015.jpg") center / cover no-repeat;
+    }
+
+    .booking-card {
+      max-width: 720px;
+      padding: 74px 0;
+    }
+
+    .booking .en {
+      color: rgba(242, 238, 231, .72);
+    }
+
+    .booking .button {
+      border-color: rgba(242, 238, 231, .82);
+      background: var(--mist);
+      color: var(--ink);
+    }
+
+    .booking .button:hover {
+      background: transparent;
+      color: var(--mist);
+    }
+
+    .access {
+      display: grid;
+      gap: 18px;
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid var(--light-line);
+      color: rgba(242, 238, 231, .78);
+      font-size: 14px;
     }
 
     footer {
       padding: 24px 6vw;
-      color: rgba(217, 213, 202, .45);
-      background: #050504;
+      color: rgba(242, 238, 231, .55);
+      background: #0b0907;
       font-size: 11px;
       letter-spacing: .12em;
       text-align: center;
     }
 
+    @media (max-width: 540px) {
+      .hero {
+        min-height: 94svh;
+      }
+
+      .hero-image img {
+        object-position: 57% center;
+      }
+
+      .gallery-item {
+        min-height: 360px;
+      }
+
+      .gallery-item.wide {
+        min-height: 390px;
+      }
+    }
+
     @media (min-width: 760px) {
       .section {
-        padding: 128px 7vw;
+        padding: 126px 7vw;
       }
 
       .hero {
-        padding: 48px 7vw 86px;
+        padding: 48px 7vw 76px;
       }
 
-      .thought-grid,
-      .feature-grid {
-        grid-template-columns: 1fr 1fr;
+      .concept-grid,
+      .stay-layout {
+        grid-template-columns: .92fr 1.08fr;
         align-items: center;
       }
 
-      .visual-note,
-      .image-slot {
-        min-height: 560px;
+      .concept-media,
+      .stay-media {
+        min-height: 620px;
       }
 
-      .quiet-list {
+      .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 260px;
+      }
+
+      .gallery-item {
+        min-height: 0;
+      }
+
+      .gallery-item.wide {
+        grid-column: span 4;
+        grid-row: span 2;
+      }
+
+      .gallery-item.medium {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-item.small {
+        grid-column: span 3;
+      }
+
+      .access {
         grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-      }
-
-      .quiet-item {
-        border-bottom: 1px solid var(--line);
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <main>
     <section class="hero">
-      <!-- Image needed: images/pikoa-hero.jpg -->
-      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-image" aria-hidden="true">
+        <img src="images/pikoa-house/A952F40F-FA3C-45C0-A3F7-9F3CA7576A4D.PNG" alt="">
+      </div>
       <div class="hero-content">
-        <p class="eyebrow">PIKOA HOUSE</p>
-        <h1>感覚をほどき、心身を澄ませる宿。</h1>
-        <p class="en">A house to soften the senses and restore clarity to body and mind.</p>
+        <p class="hero-kicker">ST FAMILIA STAY</p>
+        <h1>PIKOA HOUSE</h1>
+        <p class="hero-copy">森の中で感覚をほどき、心身のリズムを整える家。</p>
+        <p class="en">A forest house for softening the senses and restoring the rhythm of body and mind.</p>
         <a class="button" href="#booking">予約する / Reserve</a>
       </div>
     </section>
 
-    <section class="section thought">
-      <div class="inner thought-grid">
-        <div class="copy-block">
-          <p class="eyebrow">Philosophy</p>
-          <h2>PIKOA HOUSEの思想</h2>
-          <p class="jp">
-            自然の中で、身体・思考・感情の流れを整える滞在。
+    <section class="section concept">
+      <div class="inner concept-grid">
+        <div class="concept-copy">
+          <p class="eyebrow">Concept</p>
+          <h2>感覚をほどき、心身を整える家。</h2>
+          <div class="statement">
+            <p class="jp">
+              木の梁と天井、森に開く大きな窓。黒い床とウォルナットの深い質感に、自然光が静かに差し込みます。
+              PIKOA HOUSEは、過ごすほどに呼吸が深くなる、Rustic Modern × Quiet Luxuryの一棟です。
+            </p>
+            <p class="en">
+              Timber beams, warm wooden ceilings, and windows opening into the forest. Black floors and walnut tones are softened by natural light, creating a rustic modern retreat with quiet luxury.
+            </p>
+            <a class="button" href="#booking">予約する / Reserve</a>
+          </div>
+        </div>
+        <div class="concept-media">
+          <img src="images/pikoa-house/D25999B8-262A-49B4-AC96-B38C0D6B7B05.PNG" alt="森に開く窓、木の梁、ダイニング、薪ストーブのあるPIKOA HOUSEの室内">
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery">
+      <div class="inner">
+        <div class="gallery-head">
+          <p class="eyebrow">Gallery</p>
+          <h2>木と光、森の余白。</h2>
+          <p class="en">Living, dining, kitchen, bedroom, entry, and forest views composed for a slower stay.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item wide">
+            <img src="images/pikoa-house/D25999B8-262A-49B4-AC96-B38C0D6B7B05.PNG" alt="薪ストーブと森を望むリビングダイニング">
+            <figcaption class="gallery-caption">リビング / ダイニング<span>Living and dining with the forest beyond</span></figcaption>
+          </figure>
+          <figure class="gallery-item medium">
+            <img src="images/pikoa-house/522CDC2F-4AF7-4E9D-BF90-9F00E41839EF.PNG" alt="黒い床と木の天井が印象的なキッチン">
+            <figcaption class="gallery-caption">キッチン<span>Walnut, black tile, and soft daylight</span></figcaption>
+          </figure>
+          <figure class="gallery-item small">
+            <img src="images/pikoa-house/4F1DB807-5A1F-4D89-A877-434A4B9B4835.JPEG" alt="一枚板のヘッドボードと間接照明の寝室">
+            <figcaption class="gallery-caption">寝室<span>Single-slab headboard and warm indirect light</span></figcaption>
+          </figure>
+          <figure class="gallery-item small">
+            <img src="images/pikoa-house/28E6E0DC-04B9-406F-BC9A-4A7256815DAF.PNG" alt="森を望む風除室">
+            <figcaption class="gallery-caption">風除室<span>A quiet threshold facing the trees</span></figcaption>
+          </figure>
+          <figure class="gallery-item small">
+            <img src="images/pikoa-house/IMG_0015.jpg" alt="森を望む窓辺のダイニング">
+            <figcaption class="gallery-caption">森<span>Windows opening directly to the forest</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stay">
+      <div class="inner stay-layout">
+        <div>
+          <p class="eyebrow">Stay</p>
+          <h2>静けさを、分かち合う。</h2>
+          <p class="jp statement">
+            薪ストーブの火を囲み、森の気配に耳を澄ませ、家族や仲間と食卓を囲む。
+            派手さではなく、時間の質そのものが記憶に残る滞在です。
           </p>
           <p class="en">
-            A private stay shaped for quiet recalibration: body, thought, and emotion returning to their natural rhythm.
+            Gather by the wood stove, listen to the forest, and share meals with family or friends. The luxury is not excess, but the quality of time itself.
           </p>
           <a class="button" href="#booking">予約する / Reserve</a>
         </div>
-        <div class="visual-note" aria-hidden="true">
-          <!-- Image needed: images/pikoa-forest-interior.jpg -->
-        </div>
-      </div>
-    </section>
 
-    <section class="section bedroom">
-      <div class="inner feature-grid">
-        <div class="image-slot" aria-hidden="true">
-          <!-- Image needed: images/pikoa-bedroom-headboard.jpg -->
+        <div>
+          <div class="stay-media">
+            <img src="images/pikoa-house/D25999B8-262A-49B4-AC96-B38C0D6B7B05.PNG" alt="薪ストーブ、ダイニング、森を望むPIKOA HOUSEの空間">
+          </div>
+          <div class="stay-list">
+            <article class="stay-item">
+              <h3>薪ストーブ</h3>
+              <p>Firelight that gathers people naturally.</p>
+            </article>
+            <article class="stay-item">
+              <h3>森</h3>
+              <p>Windows that let the room breathe with the trees.</p>
+            </article>
+            <article class="stay-item">
+              <h3>家族や仲間で過ごす時間</h3>
+              <p>A generous table for slow meals and unhurried conversation.</p>
+            </article>
+          </div>
         </div>
-        <div class="feature-copy">
-          <p class="eyebrow">Bedroom</p>
-          <h2>深い眠りのための空間。</h2>
-          <p class="jp">
-            一枚板のヘッドボード、低く柔らかな間接照明、森を望む窓。
-            静けさを重ねるように設計された寝室です。
-          </p>
-          <p class="en">
-            A single-slab headboard, low ambient light, and a window opening toward the forest create a room composed for deep rest.
-          </p>
-          <ul class="details" aria-label="Bedroom details">
-            <li>一枚板のヘッドボード / Single-slab wooden headboard</li>
-            <li>低く柔らかな間接照明 / Low, warm indirect lighting</li>
-            <li>森を望む窓 / Forest-facing window</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section quiet">
-      <div class="inner">
-        <p class="eyebrow">Onsen, Forest, Stillness</p>
-        <h2>温泉・森・静けさ</h2>
-        <div class="quiet-list">
-          <article class="quiet-item">
-            <!-- Image needed: images/pikoa-onsen-steam.jpg -->
-            <h3>湯気</h3>
-            <p>源泉の温もりに身を沈め、余白だけが残る時間へ。</p>
-            <p>Sink into mineral warmth, where the day quietly dissolves.</p>
-          </article>
-          <article class="quiet-item">
-            <!-- Image needed: images/pikoa-forest-view.jpg -->
-            <h3>森</h3>
-            <p>窓の外に広がる木々の気配が、呼吸の速度を整える。</p>
-            <p>The presence of the forest slows the breath and steadies the mind.</p>
-          </article>
-          <article class="quiet-item">
-            <!-- Image needed: images/pikoa-soft-light.jpg -->
-            <h3>静けさ</h3>
-            <p>黒、深い木、柔らかな灯り。音を削ぎ、感覚を研ぎ澄ます。</p>
-            <p>Black tones, deep wood, and gentle light create a composed silence.</p>
-          </article>
-        </div>
-        <a class="button" href="#booking">予約する / Reserve</a>
       </div>
     </section>
 
     <section class="section booking" id="booking">
       <div class="inner">
-        <div class="copy-block">
-          <!-- Image needed: images/pikoa-booking-atmosphere.jpg -->
-          <p class="eyebrow">Reservation</p>
-          <h2>静けさへ、滞在を予約する。</h2>
+        <div class="booking-card">
+          <p class="eyebrow">Access / Booking</p>
+          <h2>森に抱かれる滞在へ。</h2>
           <p class="jp">
-            PIKOA HOUSEで、感覚をほどき、心身を澄ませる時間を。
+            PIKOA HOUSEで、身体の緊張をほどき、思考と感情の流れを静かに整える時間を。
           </p>
           <p class="en">
-            Reserve a stay at PIKOA HOUSE and return to a quieter clarity.
+            Reserve a stay at PIKOA HOUSE and return to a quieter, clearer rhythm.
           </p>
           <a class="button" href="#booking">予約する / Reserve</a>
+          <div class="access">
+            <p>Location<br>森に囲まれた一棟貸し</p>
+            <p>Stay Style<br>家族・仲間との滞在に</p>
+            <p>Atmosphere<br>Rustic Modern × Quiet Luxury</p>
+          </div>
         </div>
       </div>
     </section>
