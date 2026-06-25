@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ST FAMILIA STAY | LAVA HOUSE</title>
+  <title>株式会社サントファミリア | ST FAMILIA STAY</title>
 
   <style>
     :root {
-      --ink: #181714;
-      --paper: #f6f3ed;
-      --sand: #ded6c8;
-      --gold: #b28a52;
-      --line: rgba(24, 23, 20, .16);
+      --ink: #171410;
+      --deep: #211c16;
+      --paper: #f5f1e9;
+      --soft: #e7dfd2;
+      --muted: #776d61;
+      --gold: #ad895e;
+      --forest: #4e5e49;
+      --line: rgba(23, 20, 16, .14);
+      --light-line: rgba(245, 241, 233, .24);
     }
 
     * { box-sizing: border-box; }
@@ -24,7 +28,95 @@
       background: var(--paper);
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
         "Yu Gothic", "Noto Sans JP", sans-serif;
-      line-height: 1.75;
+      line-height: 1.78;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a { color: inherit; }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.08;
+    }
+
+    h1 {
+      max-width: 980px;
+      font-size: clamp(42px, 10vw, 112px);
+    }
+
+    h2 {
+      font-size: clamp(36px, 8vw, 78px);
+    }
+
+    h3 {
+      font-size: clamp(26px, 5vw, 42px);
+    }
+
+    p { margin: 0; }
+
+    .section {
+      padding: 88px 6vw;
+    }
+
+    .inner {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .jp {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.9;
+    }
+
+    .en {
+      margin-top: 12px;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      margin-top: 28px;
+      padding: 14px 24px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: transparent;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      transition: background .24s ease, color .24s ease, border-color .24s ease;
+    }
+
+    .button:hover {
+      background: var(--ink);
+      color: var(--paper);
     }
 
     .hero {
@@ -32,242 +124,497 @@
       position: relative;
       display: flex;
       align-items: flex-end;
-      padding: 56px 7vw 72px;
-      color: #fff;
+      padding: 32px 6vw 62px;
+      color: var(--paper);
+      background: var(--deep);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.66), rgba(0,0,0,.18) 70%),
-        linear-gradient(0deg, rgba(0,0,0,.48), transparent 55%),
-        url("images/lava-house/lava-exterior.jpg") center / cover no-repeat;
+        linear-gradient(180deg, rgba(18, 15, 11, .08), rgba(18, 15, 11, .76)),
+        linear-gradient(90deg, rgba(18, 15, 11, .7), rgba(18, 15, 11, .18) 70%);
     }
 
     .hero-content {
-      max-width: 760px;
       position: relative;
       z-index: 1;
+      width: min(100%, 1120px);
+      margin: 0 auto;
     }
 
-    .eyebrow {
-      margin: 0 0 14px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .22em;
-    }
-
-    h1, h2, h3 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 500;
-      line-height: 1.04;
-    }
-
-    h1 {
-      font-size: clamp(68px, 11vw, 170px);
-      letter-spacing: -.055em;
+    .hero .eyebrow {
+      color: rgba(245, 241, 233, .72);
     }
 
     .hero-copy {
-      margin: 24px 0 0;
-      font-size: 17px;
+      max-width: 720px;
+      margin-top: 24px;
+      font-size: clamp(20px, 4.8vw, 34px);
       font-weight: 500;
+      line-height: 1.58;
     }
 
-    .hero-description {
-      margin: 14px 0 0;
+    .hero-subcopy {
+      max-width: 620px;
+      margin-top: 14px;
+      color: rgba(245, 241, 233, .76);
+      font-size: clamp(15px, 3.8vw, 18px);
+      line-height: 1.84;
+    }
+
+    .philosophy {
+      background:
+        linear-gradient(180deg, rgba(245, 241, 233, .98), rgba(231, 223, 210, .86));
+    }
+
+    .philosophy-grid {
+      display: grid;
+      gap: 36px;
+    }
+
+    .philosophy-copy {
+      max-width: 760px;
+    }
+
+    .philosophy-visual {
+      min-height: 360px;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .experiences {
+      color: var(--paper);
+      background: var(--deep);
+    }
+
+    .experiences .en {
+      color: rgba(245, 241, 233, .68);
+    }
+
+    .experience-grid {
+      display: grid;
+      gap: 0;
+      margin-top: 44px;
+      border-top: 1px solid var(--light-line);
+    }
+
+    .experience-item {
+      padding: 30px 0;
+      border-bottom: 1px solid var(--light-line);
+    }
+
+    .experience-item p {
+      max-width: 520px;
+      margin-top: 12px;
+      color: rgba(245, 241, 233, .72);
       font-size: 14px;
-      max-width: 470px;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 32px;
-      padding: 15px 27px;
-      border: 1px solid rgba(255,255,255,.85);
-      color: #fff;
+    .stays {
+      background: #f8f4ed;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
+
+    .stay-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stay-card {
+      min-height: 440px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--paper);
       text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      transition: .25s ease;
+      background: var(--deep);
     }
 
-    .button:hover {
-      background: #fff;
+    .stay-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 36%, rgba(18, 15, 11, .82)),
+        linear-gradient(90deg, rgba(18, 15, 11, .42), transparent 70%);
+    }
+
+    .stay-card img {
+      position: absolute;
+      inset: 0;
+      transition: transform .5s ease;
+    }
+
+    .stay-card:hover img {
+      transform: scale(1.035);
+    }
+
+    .stay-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 26px;
+    }
+
+    .stay-card-content p {
+      max-width: 430px;
+      margin-top: 12px;
+      color: rgba(245, 241, 233, .76);
+      font-size: 14px;
+    }
+
+    .ski {
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(225, 241, 250, .94) 52%, rgba(245, 241, 233, .9)),
+        #f7fbfd;
+    }
+
+    .ski::before {
+      content: "";
+      position: absolute;
+      top: -22%;
+      right: -18%;
+      width: 58vw;
+      height: 58vw;
+      max-width: 760px;
+      max-height: 760px;
+      border: 1px solid rgba(142, 172, 188, .24);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .38);
+    }
+
+    .ski-panel {
+      position: relative;
+      display: grid;
+      gap: 36px;
+      align-items: end;
+    }
+
+    .ski-copy {
+      max-width: 780px;
+    }
+
+    .ski-copy .jp + .jp {
+      margin-top: 18px;
+    }
+
+    .ski .eyebrow {
+      color: #6b8ca0;
+    }
+
+    .ski-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .ski-actions .button {
+      margin-top: 0;
+      border-color: rgba(23, 20, 16, .22);
+      background: rgba(255, 255, 255, .46);
       color: var(--ink);
     }
 
-    .intro {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 110px 7vw;
-      text-align: center;
+    .ski-actions .button.primary {
+      border-color: #171410;
+      background: #171410;
+      color: #fff;
     }
 
-    .intro h2 {
-      font-size: clamp(36px, 5vw, 64px);
+    .ski-actions .button:hover,
+    .ski-actions .button.primary:hover {
+      border-color: #6b8ca0;
+      background: #6b8ca0;
+      color: #fff;
     }
 
-    .intro p {
-      max-width: 620px;
-      margin: 28px auto 0;
-      font-size: 16px;
-    }
-
-    .story {
+    .ski-notes {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 680px;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #536674;
+      font-size: 14px;
     }
 
-    .story-image {
-      min-height: 460px;
-      background: center / cover no-repeat;
+    .ski-notes li {
+      padding-top: 12px;
+      border-top: 1px solid rgba(83, 102, 116, .18);
     }
 
-    .bedroom { background-image: url("images/lava-house/lava-bedroom.jpg"); }
-    .fireplace { background-image: url("images/lava-house/lava-fireplace.jpg"); }
-    .onsen { background-image: url("images/lava-house/lava-onsen.jpg"); }
-
-    .story-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 9vw;
+    .company {
+      color: var(--paper);
+      background: var(--forest);
     }
 
-    .story-text h2 {
-      font-size: clamp(42px, 5vw, 72px);
+    .company-grid {
+      display: grid;
+      gap: 34px;
     }
 
-    .story-text p {
-      max-width: 430px;
-      margin: 26px 0 0;
-      font-size: 15px;
+    .company-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--light-line);
     }
 
-    .story.reverse .story-image { order: 2; }
-    .story.reverse .story-text { order: 1; }
-
-    .reserve {
-      padding: 120px 7vw;
-      text-align: center;
-      color: #fff;
-      background: #1b1a17;
+    .company-list div {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--light-line);
     }
 
-    .reserve h2 {
-      font-size: clamp(42px, 6vw, 82px);
+    .company-list dt {
+      color: rgba(245, 241, 233, .62);
+      font-size: 13px;
     }
 
-    .reserve p {
-      max-width: 520px;
-      margin: 24px auto 0;
-      color: rgba(255,255,255,.75);
-    }
-
-    .reserve .button {
-      border-color: var(--gold);
-      background: var(--gold);
-    }
-
-    .reserve .button:hover {
-      background: transparent;
-      color: #fff;
+    .company-list dd {
+      margin: 0;
+      font-weight: 500;
     }
 
     footer {
-      padding: 26px 7vw;
-      background: #12110f;
-      color: rgba(255,255,255,.52);
+      padding: 28px 6vw;
+      color: rgba(245, 241, 233, .56);
+      background: #0d0b08;
       font-size: 11px;
       letter-spacing: .12em;
       text-align: center;
     }
 
-    @media (max-width: 760px) {
-      .hero { padding: 42px 8vw 58px; }
-      .story { grid-template-columns: 1fr; }
-      .story.reverse .story-image,
-      .story.reverse .story-text {
-        order: initial;
+    @media (min-width: 760px) {
+      .section {
+        padding: 126px 7vw;
       }
-      .story-text { padding: 70px 8vw; }
-      .story-image { min-height: 430px; }
-      .intro { padding: 80px 8vw; }
+
+      .hero {
+        padding: 48px 7vw 86px;
+      }
+
+      .philosophy-grid,
+      .company-grid,
+      .ski-panel {
+        grid-template-columns: .95fr 1.05fr;
+        align-items: center;
+      }
+
+      .philosophy-visual {
+        min-height: 600px;
+      }
+
+      .experience-grid {
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--light-line);
+      }
+
+      .experience-item {
+        min-height: 260px;
+        padding: 32px 28px;
+        border-right: 1px solid var(--light-line);
+        border-bottom: 0;
+      }
+
+      .experience-item:last-child {
+        border-right: 0;
+      }
+
+      .stay-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stay-card {
+        min-height: 560px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <section class="hero">
-    <div class="hero-content">
-      <p class="eyebrow">ST FAMILIA STAY</p>
-      <h1>LAVA<br>HOUSE</h1>
-      <p class="hero-copy">森に還る、火と温泉の時間。</p>
-      <p class="hero-description">
-        標高800mの森に佇む、源泉かけ流し温泉付き一棟貸し。<br>
-        火を眺め、深く眠り、自然の静けさに身を委ねる滞在を。
-      </p>
-      <a class="button" href="#reserve">RESERVE</a>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="hero-image" aria-hidden="true">
+        <img src="images/pikoa-house/A952F40F-FA3C-45C0-A3F7-9F3CA7576A4D.PNG" alt="">
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">株式会社サントファミリア / ST FAMILIA STAY</p>
+        <h1>人と自然が、家族のようにつながる世界を。</h1>
+        <p class="hero-copy">雪と森の中で、本来の自分に還る時間を。</p>
+        <p class="hero-subcopy">
+          Minakami stays and experiences shaped by snow, forest, care, and quiet belonging.
+        </p>
+      </div>
+    </section>
 
-  <section class="intro">
-    <p class="eyebrow">A PRIVATE STAY IN THE FOREST</p>
-    <h2>ただ、森の時間に<br>身を委ねる。</h2>
-    <p>
-      都会の速度から少し離れ、薪の香り、湯気、木漏れ日とともに過ごす時間。<br>
-      LAVA HOUSEは、日常の外側にある静けさへ帰るための小さな隠れ家です。
-    </p>
-  </section>
+    <section class="section philosophy">
+      <div class="inner philosophy-grid">
+        <div class="philosophy-copy">
+          <p class="eyebrow">Philosophy</p>
+          <h2>愛と思いやり、自然への敬意を源に。</h2>
+          <p class="jp">
+            ともに育ち合える場をつくる。ST FAMILIA STAYは、自然の中で人がほどけ、
+            家族や仲間、地域、そして自分自身とのつながりを取り戻す時間を届けます。
+          </p>
+          <p class="en">
+            Rooted in love, care, and respect for nature, we create places where people can grow together and return to a deeper sense of connection.
+          </p>
+        </div>
+        <div class="philosophy-visual">
+          <img src="images/lava-house/lava-exterior.jpg" alt="森に佇むLAVA HOUSEの外観">
+        </div>
+      </div>
+    </section>
 
-  <section class="story">
-    <div class="story-image bedroom"></div>
-    <div class="story-text">
-      <p class="eyebrow">SLEEP IN THE WOODS</p>
-      <h2>深く眠る。</h2>
-      <p>
-        木に包まれた寝室。窓の向こうには、朝の森。<br>
-        光と影の移ろいに身をゆだね、時間を忘れる夜を。
-      </p>
-    </div>
-  </section>
+    <section class="section experiences">
+      <div class="inner">
+        <p class="eyebrow">Experiences</p>
+        <h2>SNOW / FOREST / STAY</h2>
+        <div class="experience-grid">
+          <article class="experience-item">
+            <h3>SNOW</h3>
+            <p>雪の上で、身体を使い、感じ、学ぶ。自然と向き合う力を育てる時間。</p>
+          </article>
+          <article class="experience-item">
+            <h3>FOREST</h3>
+            <p>森の静けさ、木々の匂い、光の移ろいに身を置き、感覚を澄ませる時間。</p>
+          </article>
+          <article class="experience-item">
+            <h3>STAY</h3>
+            <p>家族や仲間と過ごしながら、本来のリズムへ戻っていく滞在。</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <section class="story reverse">
-    <div class="story-image fireplace"></div>
-    <div class="story-text">
-      <p class="eyebrow">FIRE &amp; STILLNESS</p>
-      <h2>火を眺める。</h2>
-      <p>
-        薪ストーブの炎が揺れる夕暮れ。<br>
-        テラスの先に広がる森と、何もしないことを味わう贅沢。
-      </p>
-    </div>
-  </section>
+    <section class="section stays">
+      <div class="inner">
+        <div class="section-head">
+          <p class="eyebrow">ST FAMILIA STAY</p>
+          <h2>森に還る、ふたつの家。</h2>
+          <p class="en">
+            Private houses for quiet time in nature, designed for families, friends, and restorative stays.
+          </p>
+        </div>
+        <div class="stay-grid">
+          <a class="stay-card" href="lava-house.html">
+            <img src="images/lava-house/lava-fireplace.jpg" alt="LAVA HOUSEの薪ストーブと室内">
+            <div class="stay-card-content">
+              <p class="eyebrow">LAVA HOUSE</p>
+              <h3>LAVA HOUSE</h3>
+              <p>火と温泉、森の静けさに身を委ねる一棟貸し。</p>
+            </div>
+          </a>
+          <a class="stay-card" href="pikoa-house.html">
+            <img src="images/pikoa-house/D25999B8-262A-49B4-AC96-B38C0D6B7B05.PNG" alt="PIKOA HOUSEのリビングダイニング">
+            <div class="stay-card-content">
+              <p class="eyebrow">PIKOA HOUSE</p>
+              <h3>PIKOA HOUSE</h3>
+              <p>木と自然光、森に開く窓が感覚をほどく家。</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <section class="story">
-    <div class="story-image onsen"></div>
-    <div class="story-text">
-      <p class="eyebrow">NATURAL HOT SPRING</p>
-      <h2>湯にほどける。</h2>
-      <p>
-        森を望む、源泉かけ流しの温泉。<br>
-        湯気の向こうに揺れる木々とともに、心と身体をゆっくりと解いていく。
-      </p>
-    </div>
-  </section>
+    <section class="section ski">
+      <div class="inner">
+        <div class="ski-panel">
+          <div class="ski-copy">
+            <p class="eyebrow">Ski School / NORN MINAKAMI SKI SCHOOL</p>
+            <h2>楽しく、安全に、美しく。</h2>
+            <p class="jp">
+              雪の上で出会う、<br>
+              できた！という小さな奇跡。
+            </p>
+            <p class="jp">
+              ノルンみなかみスキースクールは、<br>
+              子どもから大人まで、<br>
+              一人ひとりの「やってみたい」に寄り添うスキースクールです。
+            </p>
+            <p class="jp">
+              初めて滑れた日。<br>
+              怖さを越えられた瞬間。<br>
+              思い通りにターンができた喜び。<br>
+              「ありがとう」と言ってもらえた時間。
+            </p>
+            <p class="jp">
+              できた！を共有する感動。<br>
+              ありがとうに感激すること。<br>
+              たくさんの出会いに感謝すること。
+            </p>
+            <p class="jp">
+              私たちは、<br>
+              技術だけを教えるのではなく、<br>
+              雪と向き合い、<br>
+              自分を信じ、<br>
+              挑戦する喜びを知る時間を届けます。
+            </p>
+            <p class="jp">
+              楽しく。<br>
+              安全に。<br>
+              そして、美しく。
+            </p>
+            <p class="en">
+              A trusted snow school where every step forward is shared with joy, care, and gratitude.
+            </p>
+            <div class="ski-actions" aria-label="Ski school actions">
+              <a class="button" href="https://www.nornminakami.com/">スクールについて</a>
+              <a class="button primary" href="https://www.nornminakami.com/book-online">レッスンを予約する</a>
+            </div>
+          </div>
+          <ul class="ski-notes">
+            <li>できた！を共有する感動</li>
+            <li>先生との信頼と安心感</li>
+            <li>子どもの可能性と家族の応援</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <section class="reserve" id="reserve">
-    <p class="eyebrow">STAY AT LAVA HOUSE</p>
-    <h2>森の中の、<br>あなたの時間へ。</h2>
-    <p>
-      ご予約・お問い合わせは、現在準備中です。<br>
-      まずはAirbnbまたはお問い合わせ窓口へご案内します。
-    </p>
-    <a class="button" href="mailto:info@example.com">CONTACT</a>
-  </section>
+    <section class="section company" id="company">
+      <div class="inner company-grid">
+        <div>
+          <p class="eyebrow">Company</p>
+          <h2>株式会社サントファミリア</h2>
+        </div>
+        <dl class="company-list">
+          <div>
+            <dt>設立</dt>
+            <dd>2012年12月</dd>
+          </div>
+          <div>
+            <dt>代表</dt>
+            <dd>沖 聖子</dd>
+          </div>
+          <div>
+            <dt>所在地</dt>
+            <dd>群馬県みなかみ町</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
 
-  <footer>© ST FAMILIA STAY — LAVA HOUSE</footer>
+  <footer>
+    © ST FAMILIA STAY / 株式会社サントファミリア
+  </footer>
 </body>
 </html>
